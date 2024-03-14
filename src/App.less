@@ -5,8 +5,12 @@
   background-color: #ffffff;
 
   .left {
-    width: 196px;
+    width: 200px;
     height: 100%;
+    overflow: auto;
+    &::-webkit-scrollbar{
+      width: 0;
+    }
     border-right: 4px solid #00000033;
 
     .user {

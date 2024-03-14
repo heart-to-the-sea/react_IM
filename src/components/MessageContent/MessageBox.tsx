@@ -29,6 +29,10 @@ export function MessageBox() {
   return (
     <>
       <div className="body">
+        <div className='messageTop'>
+        <div className='userIcon'></div>
+            <div className='userContent'>邢乾坤</div>
+        </div>
         <div className="message" ref={messageRef}>
           {GeneragorMessageByList(msgList)}
         </div>
