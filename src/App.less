@@ -1,0 +1,75 @@
+.pageBox {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffff;
+
+  .left {
+    width: 196px;
+    height: 100%;
+    border-right: 4px solid #00000033;
+
+    .user {
+      cursor: pointer;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      text-align: center;
+      color: #333333;
+      height: 50px;
+      line-height: 40px;
+      border-bottom: 1px solid #aaaaaa66;
+
+      .userIcon {
+        flex: 0 0 auto;
+        width: 30px;
+        height: 30px;
+        border-radius: 20px;
+        background-color: aqua;
+      }
+
+      .userContent {
+
+        max-width: 118px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        flex: 1 1 auto;
+        text-align: left;
+        margin-left: 4px;
+      }
+
+      .userMessage {
+        flex: 0 0 auto;
+        width: 30px;
+        height: 16px;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 16px;
+        padding: 0px 4px;
+        border-radius: 8px;
+        margin-left: 5px;
+        margin-right: 5px;
+        background-color: red;
+        color: #ffffff;
+      }
+
+      .userSetting {
+        flex: 0 0 auto;
+        width: 0;
+        height: 20px;
+        background-color: rebeccapurple;
+        transition: all 0.3s;
+      }
+
+      &:hover .userSetting {
+        width: 25px;
+      }
+    }
+  }
+
+  .right {
+    width: calc(100vw - 200px);
+    height: 100%;
+  }
+}
