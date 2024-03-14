@@ -2,8 +2,11 @@ import { createRef, useCallback, useEffect, useRef, useState } from 'react'
 import './MessageBox.less'
 import moment from "moment"
 import { GeneragorMessageByList } from './MessageContent'
+import { ImgDialog } from '../ImgDialog'
 
 export function MessageBox() {
+  const [dialogVisible, setDialogVisible] = useState(false)
+  const [srcData, setSrcData] = useState("")
   const [tm, setTm] = useState("")
   const content = createRef<HTMLDivElement>()
   const messageRef = createRef<HTMLDivElement>()
@@ -16,8 +19,14 @@ export function MessageBox() {
   const handleSend = () => {
     console.log(msgList)
     const date = moment().format("yyyy-MM-DD HH:mm:ss")
-    setMsgList([...msgList, { sendDate: date,msg: tm,isMy: Math.random()*10<5 }])
+    setMsgList([...msgList, { sendDate: date, msg: tm, isMy: Math.random() * 10 < 5 }])
   }
+  const openImgDialog = (src: string) => {
+    console.log(123)
+    setDialogVisible(true)
+    setSrcData(src)
+  }
+
   useEffect(() => {
     if (messageRef.current)
       messageRef.current.scrollTop = 99999999999999
@@ -30,11 +39,11 @@ export function MessageBox() {
     <>
       <div className="body">
         <div className='messageTop'>
-        <div className='userIcon'></div>
-            <div className='userContent'>邢乾坤</div>
+          <div className='userIcon'></div>
+          <div className='userContent'>邢乾坤</div>
         </div>
         <div className="message" ref={messageRef}>
-          {GeneragorMessageByList(msgList)}
+          {GeneragorMessageByList(msgList, openImgDialog)}
         </div>
         <div className="textarea-box">
           <div className="textarea-top"></div>
@@ -46,6 +55,7 @@ export function MessageBox() {
           </div>
         </div>
       </div >
+      <ImgDialog open={dialogVisible} src={srcData} onClose={() => setDialogVisible(false)} onSubmit={() => setDialogVisible(false)}></ImgDialog>
     </>
   )
 }
